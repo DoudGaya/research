@@ -34,7 +34,7 @@
 
        @auth
             <li class="ml-10 px-3 py-1 hover:bg-gray-100 cursor-pointer rounded-md">
-                <a href="#">Levitrons</a>
+                <a href="{{ route('dashboard')}}">{{ auth()->user()->username }}</a>
             </li>
             <form action="{{ route('logout')}}" method="POST">
             @csrf

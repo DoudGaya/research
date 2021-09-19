@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Date;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth'])->only(['store', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

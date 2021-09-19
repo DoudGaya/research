@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResearchLike;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\This;
+use Illuminate\Support\Facades\Mail;
 
 class PostLikeController extends Controller
 {
@@ -26,6 +27,9 @@ class PostLikeController extends Controller
             'user_id' => $request->user()->id,
         ]);
 
+       if (!$post->likes()->onlyTrashed()->where('user_id', $request->user()->id)->count()) {
+           Mail::to($post->user)->send( new ResearchLike(auth()->user(), $post));
+       }
         return back();
     }
 
