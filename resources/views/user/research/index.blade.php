@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container w-4/6 justify-center m-auto bg-white rounded-md">
-    <div class="flex flex-col  mx-8 py-5 space-x-4">
+<div class="container w-4/6 justify-center m-auto rounded-md">
+    <div class="">
   <div class="">
       {{$user->username}}
       <p>published {{ $posts->count()}} {{ Str::plural('article', $posts->count() )}} </p>
